@@ -1,3 +1,9 @@
-ui5-lable {
+ui5-label {
     display: block;
+    margin-bottom: 1rem;
+}
+
+ui5-input#searchInput{
+    margin-bottom: 1rem;
+    width: 75%;
 }
