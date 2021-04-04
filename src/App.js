@@ -16,6 +16,7 @@ import { Router, Route, Switch } from "react-router";
 import Homepage from './components/Homepage';
 import Header from './components/Header';
 import SkillsAssessment from './components/SkillsAssessment';
+import ManagerAssessment from './components/ManagerAssessment';
 
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/skills" exact>
             <SkillsAssessment />
+          </Route>
+          <Route path="/manager" exact>
+            <ManagerAssessment />
           </Route>
         </Switch>
       </section>
