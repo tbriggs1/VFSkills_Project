@@ -3,5 +3,11 @@
 }
 
 .table-column{
-    width: 12rem;
+    min-width: 510vw;
+    width: 5000rem;
 }
+
+th, td {
+    min-width: 10vw;
+}
+

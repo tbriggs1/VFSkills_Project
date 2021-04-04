@@ -13,7 +13,7 @@ const ManagerAssessment = () => {
             <ui5-button design="Default" onClick={gotoEmployee}>Goto Employee View</ui5-button>
 
             <ui5-panel width="100%" accessible-role="Complementary"
-                header-text="Employee Tom" class="full-width">
+                header-text="Employee Tom" class="full-width" collapsed="true">
                 <ui5-panel width="100%" accessible-role="Complementary"
                     header-text="Essential Skills" class="full-width">
                         <EssentialSkillTable />
@@ -24,7 +24,7 @@ const ManagerAssessment = () => {
                 </ui5-panel>
             </ui5-panel>
             <ui5-panel width="100%" accessible-role="Complementary"
-                header-text="Employee Beth" class="full-width">
+                header-text="Employee Beth" class="full-width" collapsed="true">
                 <ui5-panel width="100%" accessible-role="Complementary"
                     header-text="Essential Skills" class="full-width">
                         <EssentialSkillTable />

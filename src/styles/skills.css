@@ -7,3 +7,17 @@ ui5-input#searchInput{
     margin-bottom: 1rem;
     width: 75%;
 }
+
+td {
+    min-width: 10vw !important;
+}
+.Column-span{
+    line-height: 1.4rem;
+    min-width: 10vw !important;
+}
+
+.table-column{
+    min-width: 10vw;
+    width: 12rem;
+}
+

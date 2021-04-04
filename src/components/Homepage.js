@@ -14,23 +14,27 @@ const Homepage = () => {
         <div>
             <section className="card-section">
                 <Link to="/skills">
-                    <ui5-card  heading="Skills Assessment" subheading="Click to Enter" class="small" onClick={testClick}>   
+                    <ui5-card  avatar="home" icon="home" heading="Skills Assessment" class="small" onClick={testClick}>   
                     
                         <div className="card-body">           
-                            <button>Click to Enter</button>
+                        <h5>Welcome to the skills assessment, click on the button below assess your skills</h5>
                         </div>
                     </ui5-card>
                 </Link>
-                <ui5-card heading="Development Goals" subheading="Click to Enter" class="small">              
-                
+                <ui5-card  avatar="home" icon="home" heading="Development Goals" class="small" onClick={testClick}>   
+                    
+                    <div className="card-body">           
+                    <h5>Welcome to development goals, click on the button below to view goals</h5>
+                    </div>
                 </ui5-card>
-                <ui5-card heading="My Direct Reportees" subheading="Click to Enter" class="small">              
-                    <ui5-list separators="Inner" class="content-padding">
-                        <ui5-li icon="competitor" icon-end>Personal Development</ui5-li>
-                        <ui5-li icon="wallet" icon-end>Finance</ui5-li>
-                        <ui5-li icon="collaborate" icon-end>Communications Skills</ui5-li>
-                    </ui5-list>
-                </ui5-card>
+                <Link to="/manager">
+                <ui5-card  avatar="home" icon="home" heading="Direct Reportees" class="small" onClick={testClick}>   
+
+                        <div className="card-body">           
+                        <h5>Welcome to your direct reportees, click on the button below to see reportees</h5>
+                        </div>
+                    </ui5-card>
+                </Link>
             </section>
         </div>
 

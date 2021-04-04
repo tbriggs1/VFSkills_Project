@@ -14,7 +14,7 @@ export const EssentialSkillTable = () => {
                     <span className="Column-span">Level 1 Skill</span>
                 </ui5-table-column>
 
-                <ui5-table-column slot="columns" min-width="800" popin-text="Supplier">
+                <ui5-table-column slot="columns" min-width="600" popin-text="Supplier">
                     <span className="Column-span" >Level 2 Skill</span>
                 </ui5-table-column>
 
@@ -22,7 +22,7 @@ export const EssentialSkillTable = () => {
                     <span className="Column-span" >Employee Rating</span>
                 </ui5-table-column>
 
-                <ui5-table-column slot="columns" min-width="600" popin-text="Weight" demand-popin>
+                <ui5-table-column slot="columns"  min-width="600"  popin-text="Weight" demand-popin>
                     <span className="Column-span" >Manager Rating</span>
                 </ui5-table-column>
 
@@ -61,28 +61,26 @@ export const AdditionalSkillTable = () => {
                     <span className="Column-span">Level 1 Skill</span>
                 </ui5-table-column>
 
-                <ui5-table-column slot="columns" min-width="800" popin-text="Supplier">
+                <ui5-table-column slot="columns" min-width="5000em" popin-text="Level 2 Skill">
                     <span className="Column-span" >Level 2 Skill</span>
                 </ui5-table-column>
 
-                <ui5-table-column slot="columns" min-width="600" popin-text="Dimensions" demand-popin>
+                <ui5-table-column slot="columns" min-width="600" popin-text="Acquired By" demand-popin>
                     <span className="Column-span" >Acquired By</span>
                 </ui5-table-column>
 
-                <ui5-table-column slot="columns" min-width="600" popin-text="Weight" demand-popin>
+                <ui5-table-column slot="columns" min-width="600" popin-text="Self Rating" demand-popin>
                     <span className="Column-span" >Self Rating</span>
                 </ui5-table-column>
 
-                <ui5-table-column slot="columns" min-width="600" popin-text="Weight" demand-popin>
+                <ui5-table-column slot="columns" min-width="600" popin-text="Manager Rating" demand-popin>
                     <span className="Column-span" >Manager Rating</span>
                 </ui5-table-column>
 
-                <ui5-table-column slot="columns" min-width="600" popin-text="Weight" demand-popin>
-                    <span className="Column-span" >Open for Manager Rating</span>
-                </ui5-table-column>
+               
 
 
-                <ui5-table-row>
+                <ui5-table-row className="table-row">
                     <ui5-table-cell>
                         <p>testing</p>
                     </ui5-table-cell>
@@ -104,9 +102,6 @@ export const AdditionalSkillTable = () => {
                     </ui5-table-cell>
                     <ui5-table-cell>
                         <ui5-rating-indicator></ui5-rating-indicator>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <ui5-radiobutton text="Option A" selected name="GroupA"></ui5-radiobutton>
                     </ui5-table-cell>
                 </ui5-table-row>
             </ui5-table>
