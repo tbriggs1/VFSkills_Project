@@ -1,35 +1,51 @@
 import React from 'react';
+import '../styles/table.css';
+import "@ui5/webcomponents/dist/Table.js";
+import "@ui5/webcomponents/dist/TableColumn.js"; 
+import "@ui5/webcomponents/dist/TableRow.js"; 
+import "@ui5/webcomponents/dist/TableCell.js";
 
 export const EssentialSkillTable = () => {
     return(
-        <div>
-            <div class="header">
-                <span>Products table - resize your browser to make some columns pop-in</span>
-                <button id="toggleSticky" style="height: 32px">Toggle Sticky Column Header</button>
-            </div>
-
+        <div>      
             <ui5-table class="demo-table" id="table">
                 
-                <ui5-table-column slot="columns" style="width: 12rem">
-                    <span className="Column-span" style="line-height: 1.4rem">Product</span>
+                <ui5-table-column className="table-column" slot="columns" >
+                    <span className="Column-span">Level 1 Skill</span>
                 </ui5-table-column>
 
                 <ui5-table-column slot="columns" min-width="800" popin-text="Supplier">
-                    <span className="Column-span" >Supplier</span>
+                    <span className="Column-span" >Level 2 Skill</span>
                 </ui5-table-column>
 
                 <ui5-table-column slot="columns" min-width="600" popin-text="Dimensions" demand-popin>
-                    <span className="Column-span" >Dimensions</span>
+                    <span className="Column-span" >Employee Rating</span>
                 </ui5-table-column>
 
                 <ui5-table-column slot="columns" min-width="600" popin-text="Weight" demand-popin>
-                    <span className="Column-span" >Weight</span>
+                    <span className="Column-span" >Manager Rating</span>
                 </ui5-table-column>
 
-                <ui5-table-column slot="columns">
-                    <span className="Column-span">Price</span>
-                </ui5-table-column>
 
+                <ui5-table-cell>
+                    <p>testing</p>
+                </ui5-table-cell>
+                <ui5-table-cell>
+                    <ui5-select class="select">
+                        <ui5-option icon="iphone">Phone</ui5-option>
+                        <ui5-option icon="ipad">Tablet</ui5-option>
+                        <ui5-option icon="laptop" selected>Desktop</ui5-option>
+                    </ui5-select>
+                </ui5-table-cell>
+                <ui5-table-cell>
+                    <p>testing</p>
+                </ui5-table-cell>
+                <ui5-table-cell>
+                    <p>testing</p>
+                </ui5-table-cell>
+                <ui5-table-cell>
+                    <p>testing</p>
+                </ui5-table-cell>
             </ui5-table>
         </div>
     )
