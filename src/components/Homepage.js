@@ -2,6 +2,8 @@ import "@ui5/webcomponents/dist/Card";
 import "../styles/homepage.css";
 import "@ui5/webcomponents-icons/dist/home.js";
 import "@ui5/webcomponents-fiori/dist/Bar.js";
+import {Link} from 'react-router-dom';
+
 const Homepage = () => {
     const testClick = () =>
     {
@@ -11,12 +13,14 @@ const Homepage = () => {
     return(
         <div>
             <section className="card-section">
-                <ui5-card  heading="Skills Assessment" subheading="Click to Enter" class="small" onClick={testClick}>   
-                   
-                    <div className="card-body">           
-                        <button>Click to Enter</button>
-                    </div>
-                </ui5-card>
+                <Link to="/skills">
+                    <ui5-card  heading="Skills Assessment" subheading="Click to Enter" class="small" onClick={testClick}>   
+                    
+                        <div className="card-body">           
+                            <button>Click to Enter</button>
+                        </div>
+                    </ui5-card>
+                </Link>
                 <ui5-card heading="Development Goals" subheading="Click to Enter" class="small">              
                 
                 </ui5-card>
@@ -29,6 +33,7 @@ const Homepage = () => {
                 </ui5-card>
             </section>
         </div>
+
     )
 }
 
