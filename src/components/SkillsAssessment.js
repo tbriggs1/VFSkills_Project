@@ -1,5 +1,6 @@
 import React from 'react';
 import "@ui5/webcomponents/dist/Panel";
+import {EssentialSkillTable} from './SkillTable';
 
 const SkillsAssessment = () => {
     return(
@@ -16,6 +17,7 @@ const SkillsAssessment = () => {
                         Aute ullamco officia fugiat culpa do tempor tempor aute excepteur magna. Quis velit adipisicing excepteur do eu duis elit. Sunt ea pariatur nulla est laborum proident sunt labore commodo Lorem laboris nisi Lorem.
                     </p>
             </ui5-panel>
+            <EssentialSkillTable />
         </div>
     )
 }
