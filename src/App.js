@@ -23,7 +23,6 @@ function App() {
   return (
     <ThemeProvider>
       <section className="main-section">
-        <Header />
         <Switch>
           <Route path="/" exact>
             <Homepage />

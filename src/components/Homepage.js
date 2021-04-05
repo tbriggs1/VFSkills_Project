@@ -3,15 +3,18 @@ import "../styles/homepage.css";
 import "@ui5/webcomponents-icons/dist/home.js";
 import "@ui5/webcomponents-fiori/dist/Bar.js";
 import {Link} from 'react-router-dom';
+import Header from "./Header";
 
 const Homepage = () => {
     const testClick = () =>
     {
         console.log("Works")
     }
+const title = "Home";
 
     return(
         <div>
+            <Header title={title} />
             <section className="card-section">
                 <Link to="/skills">
                     <ui5-card  avatar="home" icon="home" heading="Skills Assessment" class="small" onClick={testClick}>   
