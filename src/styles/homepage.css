@@ -5,12 +5,15 @@
     gap: 4rem;
     justify-content: center;
     margin-top: 6rem;
+    align-items: center;
     text-align: center;
+    min-width: 30vw;
 }
 
 ui5-card.small{
-    width: 15vw;
+    min-width: 350px;
     height: 30vh;
+    min-height: 300px;
     text-align: center;
 }
 
@@ -18,7 +21,6 @@ ui5-card.small{
 .card-body{
     display:flex;
     flex-direction: column;
-    height: 15vh;
     align-items: center;
     justify-content: center;
     text-align: center;    
@@ -30,3 +32,15 @@ ui5-card.small{
     display:flex;
 }
 
+@media (max-width:1160px){
+    .card-section{
+        display:flex;
+        gap: 4rem;
+        justify-content: center;
+        margin-top: 6rem;
+        align-items: center;
+        text-align: center;
+        min-width: 30vw;
+        flex-direction: column !important;
+    }
+}
