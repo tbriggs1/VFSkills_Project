@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/table.css';
 import "@ui5/webcomponents/dist/Table.js";
 import "@ui5/webcomponents/dist/TableColumn.js"; 
@@ -6,48 +6,89 @@ import "@ui5/webcomponents/dist/TableRow.js";
 import "@ui5/webcomponents/dist/TableCell.js";
 
 export const EssentialSkillTable = () => {
-    return(
-        <div>      
-            <ui5-table class="demo-table" id="table">
-                
-                <ui5-table-column class="table-column" slot="columns" >
-                    <span class="Column-span">Level 1 Skill</span>
-                </ui5-table-column>
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [items, setItems] = useState([]);
 
-                <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="Supplier">
-                    <span class="Column-span" >Level 2 Skill</span>
-                </ui5-table-column>
+    // Note: the empty deps array [] means
+    // this useEffect will run once
+    // similar to componentDidMount()
+    useEffect(() => {
+      fetch("http://127.0.0.1:8000/api/skills/")
+        .then(res => res.json())
+        .then(
+          (result) => {
+            setIsLoaded(true);
+            setItems(result);
+            console.log(result);
+          },
+          // Note: it's important to handle errors here
+          // instead of a catch() block so that we don't swallow
+          // exceptions from actual bugs in components.
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        )
+    }, [])
+  
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+        <div>  
+            
+      <ui5-table class="demo-table" id="table">
+          
+          <ui5-table-column class="table-column" slot="columns" >
+              <span class="Column-span">Level 1 Skill</span>
+          </ui5-table-column>
 
-                <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="Dimensions" demand-popin>
-                    <span class="Column-span" >Employee Rating</span>
-                </ui5-table-column>
+          <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="Supplier">
+              <span class="Column-span" >Level 2 Skill</span>
+          </ui5-table-column>
 
-                <ui5-table-column class="table-column" slot="columns"  min-width="600"  popin-text="Weight" demand-popin>
-                    <span class="Column-span" >Manager Rating</span>
-                </ui5-table-column>
+          <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="Dimensions" demand-popin>
+              <span class="Column-span" >Employee Rating</span>
+          </ui5-table-column>
+
+          <ui5-table-column class="table-column" slot="columns"  min-width="600"  popin-text="Weight" demand-popin>
+              <span class="Column-span" >Manager Rating</span>
+          </ui5-table-column>
 
 
-                <ui5-table-row>
-                    <ui5-table-cell>
-                        <p>testing</p>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <ui5-select class="select">
-                            <ui5-option icon="iphone">Phone</ui5-option>
-                            <ui5-option icon="ipad">Tablet</ui5-option>
-                            <ui5-option icon="laptop" selected>Desktop</ui5-option>
-                        </ui5-select>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <ui5-rating-indicator></ui5-rating-indicator>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <ui5-rating-indicator></ui5-rating-indicator>
-                    </ui5-table-cell>
-                </ui5-table-row>
-            </ui5-table>
-        </div>
-    )
+          {items.map(item => (
+              <ui5-table-row>
+                  <ui5-table-cell>
+                  <p key={item.id}>
+                    {item.title}
+                  </p>
+                  </ui5-table-cell>
+                  <ui5-table-cell>
+                  <ui5-select class="select">
+                      <ui5-option>{item.subSkill}</ui5-option>
+                      <ui5-option>{item.subSkill}</ui5-option>
+                      <ui5-option selected>{item.subSkill}</ui5-option>
+                  </ui5-select>
+                  </ui5-table-cell>
+                  <ui5-table-cell>
+                    <ui5-rating-indicator value={item.employee_rating}></ui5-rating-indicator>
+                  </ui5-table-cell>
+                  <ui5-table-cell>
+                    <ui5-rating-indicator value={item.manager_rating}></ui5-rating-indicator>
+                 </ui5-table-cell>
+            </ui5-table-row>))}
+
+        
+              
+            
+      </ui5-table>
+  </div>
+      );
+    }
+   
 }
 
 

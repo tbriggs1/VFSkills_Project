@@ -5,32 +5,12 @@ import axios from 'axios';
 // // const { API_KEY } = process.env
 // // const API_URL = 'http://api.musicgraph.com/api/v2/artist/suggest'
 
+const base_url = "http://127.0.0.1:8000";
 
 const Search = () => {
-
-    const [data, setData] = useState();
-
-    useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/skills/`)
-              .then((response) => {
-                  setData(response.data[0].title);
-                //   console.log(response.data.data);
-                //   console.log(response.data[0].title);
-                //   console.log(response.data[0])
-                //   console.log(response.title);
-                  console.log(data);
-              })
-    })
-
-    return(
-        <div>
-            <form>
-                <input
-                placeholder="Search for..."/>
-            </form>
-        </div>
-    )
+    
 }
+
 
 export default Search;
 // class Search extends Component {

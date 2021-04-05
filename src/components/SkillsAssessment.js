@@ -29,7 +29,6 @@ const SkillsAssessment = () => {
                 {/* <ui5-input id="searchInput" placeholder="Enter search criteria ..." width="100%">
 	                <ui5-icon id="searchIcon" slot="icon" name="search"></ui5-icon>
                 </ui5-input> */}
-                <Search />
                 <AdditionalSkillTable />
                 <ui5-button design="Positive">Save and Submit</ui5-button>
                 <ui5-button design="Negative">Cancel</ui5-button>
