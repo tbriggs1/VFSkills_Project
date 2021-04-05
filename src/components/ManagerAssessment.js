@@ -19,7 +19,7 @@ const ManagerAssessment = () => {
                 header-text="Employee Tom" class="full-width" collapsed="true">
                 <ui5-panel width="100%" accessible-role="Complementary"
                     header-text="Essential Skills" class="full-width">
-                        <EssentialSkillTable />
+                        <EssentialSkillTable userid="tom"/>
                 </ui5-panel>
                 
                 <ui5-panel width="100%" accessible-role="Complementary" header-text="Additonal Skills">
@@ -30,7 +30,7 @@ const ManagerAssessment = () => {
                 header-text="Employee Beth" class="full-width" collapsed="true">
                 <ui5-panel width="100%" accessible-role="Complementary"
                     header-text="Essential Skills" class="full-width">
-                        <EssentialSkillTable />
+                        <EssentialSkillTable userid="beth"/>
                 </ui5-panel>
                 
                 <ui5-panel width="100%" accessible-role="Complementary" header-text="Additonal Skills">
