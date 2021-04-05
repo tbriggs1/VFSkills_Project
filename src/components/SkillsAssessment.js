@@ -16,11 +16,11 @@ const SkillsAssessment = () => {
             <h5>Team Manager</h5>
             <ui5-panel width="100%" accessible-role="Complementary"
                 header-text="Essential Skills" class="full-width">
-                    <ui5-label wrap>Please add your essential skills</ui5-label>
+                    <ui5-label class="label-heading" wrap>Please add your essential skills</ui5-label>
                     <EssentialSkillTable />
             </ui5-panel>
             <ui5-panel width="100%" accessible-role="Complementary" header-text="Additonal Skills">
-                <ui5-label wrap>Please add your additonal skills</ui5-label>
+                <ui5-label class="label-heading" wrap>Please add your additonal skills</ui5-label>
                 <ui5-input id="searchInput" placeholder="Enter search criteria ..." width="100%">
 	                <ui5-icon id="searchIcon" slot="icon" name="search"></ui5-icon>
                 </ui5-input>
