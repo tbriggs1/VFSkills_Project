@@ -112,3 +112,75 @@ export const AdditionalSkillTable = () => {
         </div>
     )
 }
+
+export const DevelopmentTable = () => {
+    return(
+        <div>
+            <ui5-table class="demo-table" id="table">
+                
+                <ui5-table-column class="table-column" slot="columns" >
+                    <span class="Column-span">Development Goals</span>
+                </ui5-table-column>
+
+                <ui5-table-column class="table-column" slot="columns" popin-text="Level 2 Skill">
+                    <span class="Column-span">Mapped Skills</span>
+                </ui5-table-column>
+
+                <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="Acquired By" demand-popin>
+                    <span class="Column-span">Associated Content</span>
+                </ui5-table-column>
+
+
+               
+
+
+                <ui5-table-row class="table-row">
+                    <ui5-table-cell >
+                        <p>Automate proccess and operations by developing programs that improve efficiency.</p>
+                    </ui5-table-cell>
+                    <ui5-table-cell  class="table-cell">
+                        <ui5-input value="Input"></ui5-input>
+                    </ui5-table-cell>
+                    <ui5-table-cell  >
+                        <ui5-select class="select" class="table-cell">
+                            <ui5-option>Web Link</ui5-option>
+                            <ui5-option>Online course</ui5-option>
+                            <ui5-option selected>Project</ui5-option>
+                        </ui5-select>
+                    </ui5-table-cell>
+                </ui5-table-row>
+                <ui5-table-row class="table-row">
+                    <ui5-table-cell >
+                        <p>Automate proccess and operations by developing programs that improve efficiency.</p>
+                    </ui5-table-cell>
+                    <ui5-table-cell  class="table-cell">
+                        <ui5-input value="Input"></ui5-input>
+                    </ui5-table-cell>
+                    <ui5-table-cell  >
+                        <ui5-select class="select" class="table-cell">
+                            <ui5-option>Web Link</ui5-option>
+                            <ui5-option>Online course</ui5-option>
+                            <ui5-option selected>Project</ui5-option>
+                        </ui5-select>
+                    </ui5-table-cell>
+                </ui5-table-row>
+                <ui5-table-row class="table-row">
+                    <ui5-table-cell >
+                        <p>Automate proccess and operations by developing programs that improve efficiency.</p>
+                    </ui5-table-cell>
+                    <ui5-table-cell  class="table-cell">
+                        <ui5-input value="Input"></ui5-input>
+                    </ui5-table-cell>
+                    <ui5-table-cell  >
+                        <ui5-select class="select" class="table-cell">
+                            <ui5-option>Web Link</ui5-option>
+                            <ui5-option>Online course</ui5-option>
+                            <ui5-option selected>Project</ui5-option>
+                        </ui5-select>
+                    </ui5-table-cell>
+                </ui5-table-row>
+                
+            </ui5-table>
+        </div>
+    )
+}

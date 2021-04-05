@@ -20,22 +20,27 @@ const title = "Home";
                     <ui5-card  avatar="home" icon="home" heading="Skills Assessment" class="small" onClick={testClick}>   
                     
                         <div className="card-body">           
-                        <h5>Welcome to the skills assessment, click on the button below assess your skills</h5>
+                        <h4>Welcome to the skills assessment, click on the button below assess your skills</h4>
                         </div>
+                        <ui5-button design="Default">Goto Skills</ui5-button>
                     </ui5-card>
                 </Link>
-                <ui5-card  avatar="home" icon="home" heading="Development Goals" class="small" onClick={testClick}>   
-                    
-                    <div className="card-body">           
-                    <h5>Welcome to development goals, click on the button below to view goals</h5>
-                    </div>
-                </ui5-card>
+                <Link to="/development">
+                    <ui5-card  avatar="home" icon="home" heading="Development Goals" class="small" onClick={testClick}>   
+                        
+                        <div className="card-body">           
+                        <h4>Welcome to development goals, click on the button below to view goals</h4>
+                        </div>
+                        <ui5-button design="Default">Goto Development Goals</ui5-button>
+                    </ui5-card>
+                </Link>
                 <Link to="/manager">
                 <ui5-card  avatar="home" icon="home" heading="Direct Reportees" class="small" onClick={testClick}>   
 
                         <div className="card-body">           
-                        <h5>Welcome to your direct reportees, click on the button below to see reportees</h5>
+                        <h4>Welcome to your direct reportees, click on the button below to see reportees</h4>
                         </div>
+                        <ui5-button design="Default">View Direct Reportees</ui5-button>
                     </ui5-card>
                 </Link>
             </section>

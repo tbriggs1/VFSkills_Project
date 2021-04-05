@@ -17,6 +17,7 @@ import Homepage from './components/Homepage';
 import Header from './components/Header';
 import SkillsAssessment from './components/SkillsAssessment';
 import ManagerAssessment from './components/ManagerAssessment';
+import DevelopmentGoals from './components/DevelopmentGoals';
 
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/manager" exact>
             <ManagerAssessment />
+          </Route>
+          <Route path="/development" exact>
+            <DevelopmentGoals />
           </Route>
         </Switch>
       </section>
