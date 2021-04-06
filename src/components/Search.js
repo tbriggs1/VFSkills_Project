@@ -1,14 +1,5 @@
 import React from 'react';
 
-const people = [
-    "Siri",
-    "Alexa",
-    "Google",
-    "Facebook",
-    "Twitter",
-    "Linkedin",
-    "Sinkedin"
-  ];
 
 
 const Search = () => {
@@ -18,11 +9,43 @@ const Search = () => {
     const [error, setError] = React.useState(null);
     const [isLoaded, setIsLoaded] = React.useState(false);
     const [items, setItems] = React.useState([]);
-    const [title, setTitle] = React.useState([]);
+    const [subskill, setSubskill] = React.useState([]);
+    // const [title, setTitle] = React.useState([]);
+    const title = []
+    
+    React.useEffect(() => {
+      fetch(`http://135.125.27.98:8181/api/skills/`)
+        .then(res => res.json())
+        .then(
+          (result) => {
+            setIsLoaded(true);
+            setItems(result); 
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        )
+    }, [])
+    React.useEffect(() => {
+      fetch(`http://135.125.27.98:8181/api/subskills/`)
+        .then(res => res.json())
+        .then(
+          (result) => {
+            setIsLoaded(true);
+            setSubskill(result); 
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        )
+    }, [])
+
     const handleChange = event => {
        setSearchTerm(event.target.value);
-       console.log(searchTerm.length);
-       if (searchTerm.length === 1){
+       console.log(event.target.value);
+       if (event.target.value.length === 0){
            setPeople([])
        }
      };
@@ -30,44 +53,24 @@ const Search = () => {
         const results = people.filter(person =>
             person.toLowerCase().includes(searchTerm.toLowerCase())
        );
-       setPeople([ "Siri",
-       "Alexa",
-       "Google",
-       "Facebook",
-       "Twitter",
-       "Linkedin"]);
+       
+       setPeople(title);
        setSearchResults(results);
      }, [searchTerm]);
 
-     React.useEffect(() => {
-        fetch(`http://135.125.27.98:8181/api/skills/`)
-          .then(res => res.json())
-          .then(
-            (result) => {
-              setIsLoaded(true);
-              setItems(result);
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
-            (error) => {
-              setIsLoaded(true);
-              setError(error);
-            }
-          )
-      }, [])
-
+    
+const addRow = (e) => {
+  console.log(e.target.innerText)
+}
 
 if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
-    } else{
-        items.map(item => (
-                item.SubSkill
-                
-                ))
-                
+    } else{  
+      subskill.map(item => {
+        title.push(item.title)
+       })
     return (
     <div>
             <input
@@ -78,7 +81,7 @@ if (error) {
             />
             <ul>
                 {searchResults.map(item => (
-                <li>{item}</li>
+                <li onClick={addRow}>{item}</li>
                 ))}
             </ul>
     </div>

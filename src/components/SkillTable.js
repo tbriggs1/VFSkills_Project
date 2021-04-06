@@ -4,11 +4,15 @@ import "@ui5/webcomponents/dist/Table.js";
 import "@ui5/webcomponents/dist/TableColumn.js"; 
 import "@ui5/webcomponents/dist/TableRow.js"; 
 import "@ui5/webcomponents/dist/TableCell.js";
+import Popup from 'reactjs-popup';
+import Search from './Search';
 
 export const EssentialSkillTable = ({userid}) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
+    const [title, setTitle] = useState(0);
+
     // Note: the empty deps array [] means
     // this useEffect will run once
     // similar to componentDidMount()
@@ -30,6 +34,11 @@ export const EssentialSkillTable = ({userid}) => {
           }
         )
     }, [])
+
+    const openPopover = () => {
+        
+    }
+   
   
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -44,12 +53,8 @@ export const EssentialSkillTable = ({userid}) => {
                 <span class="Column-span">Level 1 Skill</span>
             </ui5-table-column>
 
-            <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="Supplier">
-                <span class="Column-span" >Level 2 Skill</span>
-            </ui5-table-column>
-
             <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="Dimensions" demand-popin>
-                <span class="Column-span" >Employee Rating</span>
+                <span class="Column-span" >Employee Rating *</span>
             </ui5-table-column>
 
             <ui5-table-column class="table-column" slot="columns"  min-width="600"  popin-text="Weight" demand-popin>
@@ -60,16 +65,10 @@ export const EssentialSkillTable = ({userid}) => {
             {items.map(item => (
                 <ui5-table-row>
                     <ui5-table-cell>
-                    <p key={item.id}>
+                    <h3 key={item.id}>
                         {item.title}
-                    </p>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                    <ui5-select class="select">
-                        <ui5-option>{item.subSkill}</ui5-option>
-                        <ui5-option>{item.subSkill}</ui5-option>
-                        <ui5-option selected>{item.subSkill}</ui5-option>
-                    </ui5-select>
+                    </h3> <br/> <Popup trigger={<ui5-button icon="add" id="openPopoverButton" aria-labelledby="lblAdd" class="add-btn" onClick={openPopover}></ui5-button>}
+                    position="bottom left"><Search/></Popup>
                     </ui5-table-cell>
                     <ui5-table-cell>
                         <ui5-rating-indicator value={item.employee_rating}></ui5-rating-indicator>
@@ -77,7 +76,8 @@ export const EssentialSkillTable = ({userid}) => {
                     <ui5-table-cell>
                         <ui5-rating-indicator value={item.manager_rating}></ui5-rating-indicator>
                     </ui5-table-cell>
-                </ui5-table-row>))}
+                </ui5-table-row>))
+                }
 
             
                 
@@ -87,7 +87,7 @@ export const EssentialSkillTable = ({userid}) => {
         );
         
     }
-   
+
 }
 
 

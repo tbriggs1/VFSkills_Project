@@ -8,6 +8,16 @@ ui5-input#searchInput{
     width: 75%;
 }
 
+*{
+    --sapList_HeaderBackground: #B40001;
+}
+
+.popup{
+    background: #B40001;
+    height: 10vh;
+    width: 20vw;
+}
+
 td {
     min-width: 10vw !important;
 }
@@ -19,6 +29,20 @@ td {
 .table-column{
     min-width: 10vw;
     width: 12rem;
+    background: red;
+    color: white;
+}
+
+:host([first]) th{
+    background: yellow !important; 
+}
+
+th{
+    background: red !important;
+}
+
+body[part="column"]{
+    background: pink !important;
 }
 
 .submit-btn{
