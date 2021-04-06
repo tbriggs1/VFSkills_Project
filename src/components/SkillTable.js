@@ -13,7 +13,7 @@ export const EssentialSkillTable = ({userid}) => {
     // this useEffect will run once
     // similar to componentDidMount()
     useEffect(() => {
-      fetch(`http://127.0.0.1:8000/api/skills/?title=&studID=${userid}`)
+      fetch(`http://135.125.27.98:8181/api/skills/?title=&studID=${userid}`)
         .then(res => res.json())
         .then(
           (result) => {

@@ -20,6 +20,9 @@ const ManagerAssessment = () => {
                 <ui5-panel width="100%" accessible-role="Complementary"
                     header-text="Essential Skills" class="full-width">
                         <EssentialSkillTable userid="tom"/>
+                <ui5-button class="submit-btn" design="Positive">Save and Submit</ui5-button>
+                <ui5-button design="Negative">Cancel</ui5-button>
+                
                 </ui5-panel>
                 
                 <ui5-panel width="100%" accessible-role="Complementary" header-text="Additonal Skills">
@@ -35,6 +38,8 @@ const ManagerAssessment = () => {
                 
                 <ui5-panel width="100%" accessible-role="Complementary" header-text="Additonal Skills">
                     <AdditionalSkillTable />
+                    <ui5-button class="submit-btn" design="Positive">Save and Submit</ui5-button>
+                    <ui5-button design="Negative">Cancel</ui5-button>
                 </ui5-panel>
             </ui5-panel>
             

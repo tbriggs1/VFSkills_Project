@@ -5,9 +5,12 @@ import Search from './Search';
 import "../styles/skills.css";
 import {useHistory} from 'react-router-dom';
 import Header from './Header';
-const SkillsAssessment = () => {
+import SearchPage from './SearchPage';
 
-        const history = useHistory();
+
+
+const SkillsAssessment = () => {
+    const history = useHistory();
         const gotoManager = useCallback(() => history.push('/manager'), [history])
         const title = "Employee View";
     
@@ -21,19 +24,18 @@ const SkillsAssessment = () => {
                 header-text="Essential Skills" class="full-width">
                     <ui5-label class="label-heading" wrap>Please add your essential skills</ui5-label>
                     <EssentialSkillTable userid="tom"/>
-                    <ui5-button design="Positive">Save and Submit</ui5-button>
+                    <ui5-button class="submit-btn" design="Positive">Save and Submit</ui5-button>
                     <ui5-button design="Negative">Cancel</ui5-button>
             </ui5-panel>
             <ui5-panel width="100%" accessible-role="Complementary" header-text="Additonal Skills">
                 <ui5-label class="label-heading" wrap>Please add your additonal skills</ui5-label>
-                {/* <ui5-input id="searchInput" placeholder="Enter search criteria ..." width="100%">
-	                <ui5-icon id="searchIcon" slot="icon" name="search"></ui5-icon>
-                </ui5-input> */}
+                <Search />
                 <AdditionalSkillTable />
-                <ui5-button design="Positive">Save and Submit</ui5-button>
+                <ui5-button class="submit-btn" design="Positive">Save and Submit</ui5-button>
                 <ui5-button design="Negative">Cancel</ui5-button>
                 
             </ui5-panel>
+
         </div>
     )
 }
