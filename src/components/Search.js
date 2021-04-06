@@ -1,5 +1,5 @@
 import React from 'react';
-
+import axios from 'axios';
 
 
 const Search = () => {
@@ -14,7 +14,7 @@ const Search = () => {
     const title = []
     
     React.useEffect(() => {
-      fetch(`http://135.125.27.98:8181/api/skills/`)
+      fetch(`https://135.125.27.98:8000/api/skills/`)
         .then(res => res.json())
         .then(
           (result) => {
@@ -28,7 +28,7 @@ const Search = () => {
         )
     }, [])
     React.useEffect(() => {
-      fetch(`http://135.125.27.98:8181/api/subskills/`)
+      fetch(`https://135.125.27.98:8000/api/subskills/`)
         .then(res => res.json())
         .then(
           (result) => {
@@ -60,7 +60,8 @@ const Search = () => {
 
     
 const addRow = (e) => {
-  console.log(e.target.innerText)
+  const body = {title: e.target.innerText, acquired: 'test', comments: 'write comment', employee_rating: 1, manager_rating: 1, studID: 'tom' };
+  axios.post('https://135.125.27.98:8000/api/additonalskills/', body);
 }
 
 if (error) {
