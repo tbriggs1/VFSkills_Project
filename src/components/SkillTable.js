@@ -22,7 +22,7 @@ export const EssentialSkillTable = ({userid}) => {
     // similar to componentDidMount()
     useEffect(() => {
     let id = setInterval(() => {
-        fetch(`https://135.125.27.98:8000/api/essentialskills/?studID=${userid}`)
+        fetch(`https://135.125.27.98:8000/api/essentialskills/?title=&studID=${userid}`)
             .then(res => res.json())
             .then(
             (result) => {
