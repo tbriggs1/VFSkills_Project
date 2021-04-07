@@ -8,7 +8,7 @@ import Popup from 'reactjs-popup';
 import Search from './Search';
 import SearchPage from './SearchPage';
 import axios from 'axios';
-import RunRows from './RunRows';
+import {RunRows, ManagerRunRows} from './RunRows';
 
 export const EssentialSkillTable = ({userid}) => {
     const [error, setError] = useState(null);
@@ -197,8 +197,7 @@ export const ManagerEssentialSkillTable = ({userid}) => {
                     <ui5-table-cell>
                     <h3 id={item.id} key={item.id}>
                         {item.title}
-                    </h3><Popup trigger={<ui5-button icon="add" id="openPopoverButton" icon-size="10px" aria-labelledby="lblAdd" class="add-btn"></ui5-button>}
-                    position="bottom left"><div class="popup-search"><SearchPage skill={item.id} class="search-bar"/></div></Popup>
+                    </h3>
                     </ui5-table-cell>
                     <ui5-table-cell>
                         <ui5-rating-indicator value={item.employee_rating}></ui5-rating-indicator>
@@ -212,7 +211,7 @@ export const ManagerEssentialSkillTable = ({userid}) => {
                 
                 }
     
-  
+    <ManagerRunRows items={eSkill}/>
         </ui5-table>
     </div>
         );
