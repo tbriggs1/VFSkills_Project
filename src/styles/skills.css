@@ -48,3 +48,7 @@ body[part="column"]{
 .submit-btn{
     margin-right: 10px;
 }
+
+.delete-btn{
+    margin-left: 10rem;
+}

@@ -1,40 +1,93 @@
-import React, { useState, useEffect } from 'react';
-import Search from './Search';
-import CountryList from './CountryList';
+import React from 'react';
+import axios from 'axios';
 
-const SearchPage = (props) => {
-  const [input, setInput] = useState('');
-  const [countryListDefault, setCountryListDefault] = useState();
-  const [countryList, setCountryList] = useState();
 
-  const fetchData = async () => {
-    return await fetch('https://restcountries.eu/rest/v2/all')
-      .then(response => response.json())
-      .then(data => {
-         setCountryList(data) 
-         setCountryListDefault(data)
-       });}
+const Search = () => {
+    const [searchTerm, setSearchTerm] = React.useState("");
+    const [searchResults, setSearchResults] = React.useState([]);
+    const [people, setPeople] = React.useState([ ]);
+    const [error, setError] = React.useState(null);
+    const [isLoaded, setIsLoaded] = React.useState(false);
+    const [items, setItems] = React.useState([]);
+    const [subskill, setSubskill] = React.useState([]);
+    // const [title, setTitle] = React.useState([]);
+    const title = []
+    
+    React.useEffect(() => {
+      fetch(`https://135.125.27.98:8000/api/skills/`)
+        .then(res => res.json())
+        .then(
+          (result) => {
+            setIsLoaded(true);
+            setItems(result); 
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        )
+    }, [])
+    React.useEffect(() => {
+      fetch(`https://135.125.27.98:8000/api/subskills/`)
+        .then(res => res.json())
+        .then(
+          (result) => {
+            setIsLoaded(true);
+            setSubskill(result); 
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        )
+    }, [])
 
-  const updateInput = async (input) => {
-     const filtered = countryListDefault.filter(country => {
-      return country.name.toLowerCase().includes(input.toLowerCase())
-     })
-     setInput(input);
-     setCountryList(filtered);
-  }
+    const handleChange = event => {
+       setSearchTerm(event.target.value);
+       console.log(event.target.value);
+       if (event.target.value.length === 0){
+           setPeople([])
+       }
+     };
+    React.useEffect(() => {
+        const results = people.filter(person =>
+            person.toLowerCase().includes(searchTerm.toLowerCase())
+       );
+       
+       setPeople(title);
+       setSearchResults(results);
+     }, [searchTerm]);
 
-  useEffect( () => {fetchData()},[]);
-	
-  return (
-    <>
-      <h1>Country List</h1>
-      <Search 
-       input={input} 
-       onChange={updateInput}
-      />
-      <CountryList countryList={countryList}/>
-    </>
-   );
+    
+const addRow = (e) => {
+  console.log(e.target.innerText)
+  const body = {title: e.target.innerText, employee_rating: 1, manager_rating: 1, studID: 'tom' };
+  axios.post('https://135.125.27.98:8000/api/skills/', body);
 }
 
-export default SearchPage
+if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else{  
+      subskill.map(item => {
+        title.push(item.title)
+       })
+    return (
+    <div>
+            <input
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={handleChange}
+            />
+            <ul>
+                {searchResults.map(item => (
+                <li onClick={addRow}>{item}</li>
+                ))}
+            </ul>
+    </div>
+    );
+    }
+}
+export default Search

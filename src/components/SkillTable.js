@@ -6,6 +6,8 @@ import "@ui5/webcomponents/dist/TableRow.js";
 import "@ui5/webcomponents/dist/TableCell.js";
 import Popup from 'reactjs-popup';
 import Search from './Search';
+import SearchPage from './SearchPage';
+import axios from 'axios';
 
 export const EssentialSkillTable = ({userid}) => {
     const [error, setError] = useState(null);
@@ -34,10 +36,7 @@ export const EssentialSkillTable = ({userid}) => {
           }
         )
     }, [])
-
-    
- 
-  
+   
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -65,8 +64,8 @@ export const EssentialSkillTable = ({userid}) => {
                     <ui5-table-cell>
                     <h3 key={item.id}>
                         {item.title}
-                    </h3> <br/> <Popup trigger={<ui5-button icon="add" id="openPopoverButton" aria-labelledby="lblAdd" class="add-btn"></ui5-button>}
-                    position="bottom left"><Search/></Popup>
+                    </h3> <br/><Popup trigger={<ui5-button icon="add" id="openPopoverButton" aria-labelledby="lblAdd" class="add-btn"></ui5-button>}
+                    position="bottom left"><SearchPage /></Popup>
                     </ui5-table-cell>
                     <ui5-table-cell>
                         <ui5-rating-indicator value={item.employee_rating}></ui5-rating-indicator>
@@ -85,6 +84,10 @@ export const EssentialSkillTable = ({userid}) => {
 
 }
 
+const rowDelete = (e) => {
+    const id = e.target.id
+    axios.delete(`https://135.125.27.98:8000/api/additonalskills/${id}/`)
+}
 
 
 export const AdditionalSkillTable = ({userid}) => {
@@ -139,6 +142,7 @@ export const AdditionalSkillTable = ({userid}) => {
                 <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="Manager Rating" demand-popin>
                     <span class="Column-span" >Manager Rating</span>
                 </ui5-table-column>
+                
 
                
                 {aSkill.map(item => (
@@ -161,8 +165,9 @@ export const AdditionalSkillTable = ({userid}) => {
                     <ui5-table-cell>
                         <ui5-rating-indicator value={item.employee_rating}></ui5-rating-indicator>
                     </ui5-table-cell>
-                    <ui5-table-cell>
+                    <ui5-table-cell >
                         <ui5-rating-indicator value={item.manager_rating}></ui5-rating-indicator>
+                        <ui5-button class="delete-btn" icon="cancel" design="Negative" aria-labelledby="lblCancel" id={item.id} onClick={rowDelete}></ui5-button>
                     </ui5-table-cell>
                 </ui5-table-row>))
                 }
