@@ -13,7 +13,6 @@ const SkillsAssessment = () => {
     const history = useHistory();
     const gotoManager = useCallback(() => history.push('/manager'), [history])
     const title = "Employee View";
-    const [call, setCall] = useState();
 
 
        
@@ -32,8 +31,8 @@ const SkillsAssessment = () => {
             </ui5-panel>
             <ui5-panel width="100%" accessible-role="Complementary" header-text="Additonal Skills">
                 <ui5-label class="label-heading" wrap>Please add your additonal skills</ui5-label>
-                <Search setCall={setCall}/>
-                <AdditionalSkillTable userid="tom" call={call}/>
+                <Search/>
+                <AdditionalSkillTable userid="tom"/>
                 <ui5-button class="submit-btn" design="Positive">Save and Submit</ui5-button>
                 <ui5-button design="Negative">Cancel</ui5-button>
                 

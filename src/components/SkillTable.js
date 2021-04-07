@@ -92,23 +92,27 @@ export const AdditionalSkillTable = ({userid}) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [aSkill, setASkill] = useState([]);
 
-    useEffect(() => {
-        fetch(`https://135.125.27.98:8000/api/additonalskills/?title=&studID=${userid}`)
-          .then(res => res.json())
-          .then(
-            (result) => {
-              setIsLoaded(true);
-              setASkill(result);
-              
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
-            (error) => {
-              setIsLoaded(true);
-              setError(error);
-            }
-          )
+
+   useEffect(() => {
+        let id = setInterval(() => {
+            fetch(`https://135.125.27.98:8000/api/additonalskills/?title=&studID=${userid}`)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                setIsLoaded(true);
+                setASkill(result);
+                
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                setIsLoaded(true);
+                setError(error);
+                }
+            )
+        },1000 )
+        return () => clearInterval(id);
       }, [])
 
    
