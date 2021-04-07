@@ -22,7 +22,7 @@ const RunRows = ({items}) =>{
         </ui5-table-cell>
         <ui5-table-cell>
             <ui5-rating-indicator value={item.manager_rating}></ui5-rating-indicator>
-            <ui5-button class="delete-btn" icon="cancel" design="Negative" aria-labelledby="lblCancel" id={item.id} onClick={rowDelete}></ui5-button>
+            <ui5-button class="delete-btn" icon="cancel" icon-size="10px" design="Negative" aria-labelledby="lblCancel" id={item.id} onClick={rowDelete}></ui5-button>
         </ui5-table-cell>
     </ui5-table-row>))
     }
