@@ -10,6 +10,7 @@ const Search = () => {
     const [isLoaded, setIsLoaded] = React.useState(false);
     const [items, setItems] = React.useState([]);
     const [subskill, setSubskill] = React.useState([]);
+
     // const [title, setTitle] = React.useState([]);
     const title = []
     

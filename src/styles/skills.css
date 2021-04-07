@@ -52,3 +52,28 @@ body[part="column"]{
 .delete-btn{
     margin-left: 10rem;
 }
+
+.popup-search{
+    display:flex;
+    box-shadow: 2px 2px #888888;
+    justify-content: center;
+    padding:1rem;
+    background: rgb(180,0,1, 0.9);
+    color: white;
+    width: auto;
+    height: auto;
+}
+
+.popup-search div input{
+    border:none;
+    padding:0.2rem;
+    padding-left: 0.4rem;
+    border-radius: 10px;
+}
+
+
+.search-ui {
+    list-style-type: none;
+    cursor: pointer;
+    text-align: start;
+}

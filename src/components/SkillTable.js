@@ -8,34 +8,61 @@ import Popup from 'reactjs-popup';
 import Search from './Search';
 import SearchPage from './SearchPage';
 import axios from 'axios';
+import RunRows from './RunRows';
 
 export const EssentialSkillTable = ({userid}) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
     const [aSkill, setASkill] = useState([]);
-
+    const [eSkill, setESkill] = useState([]);
+    const [skill, setSkill] = React.useState();
     // Note: the empty deps array [] means
     // this useEffect will run once
     // similar to componentDidMount()
     useEffect(() => {
-      fetch(`https://135.125.27.98:8000/api/skills/?title=&studID=${userid}`)
-        .then(res => res.json())
-        .then(
-          (result) => {
-            setIsLoaded(true);
-            setItems(result);
-            
-          },
-          // Note: it's important to handle errors here
-          // instead of a catch() block so that we don't swallow
-          // exceptions from actual bugs in components.
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          }
-        )
+    let id = setInterval(() => {
+        fetch(`https://135.125.27.98:8000/api/essentialskills/?studID=${userid}`)
+            .then(res => res.json())
+            .then(
+            (result) => {
+                setIsLoaded(true);
+                setESkill(result);
+                
+            },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            (error) => {
+                setIsLoaded(true);
+                setError(error);
+            }
+            )}, 1000 )
+            return () => clearInterval(id);
     }, [])
+
+    useEffect(() => {
+        fetch(`https://135.125.27.98:8000/api/skills/?title=&studID=${userid}`)
+          .then(res => res.json())
+          .then(
+            (result) => {
+              setIsLoaded(true);
+              setItems(result);
+              
+            },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            (error) => {
+              setIsLoaded(true);
+              setError(error);
+            }
+          )
+      }, [])
+
+      const getId = (e) => {
+          console.log(e)
+      }
    
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -62,19 +89,24 @@ export const EssentialSkillTable = ({userid}) => {
             {items.map(item => (
                 <ui5-table-row>
                     <ui5-table-cell>
-                    <h3 key={item.id}>
+                    <h3 id={item.id} key={item.id}>
                         {item.title}
                     </h3> <br/><Popup trigger={<ui5-button icon="add" id="openPopoverButton" aria-labelledby="lblAdd" class="add-btn"></ui5-button>}
-                    position="bottom left"><SearchPage /></Popup>
+                    position="bottom left"><div class="popup-search"><SearchPage skill={item.id} class="search-bar"/></div></Popup>
                     </ui5-table-cell>
                     <ui5-table-cell>
                         <ui5-rating-indicator value={item.employee_rating}></ui5-rating-indicator>
                     </ui5-table-cell>
                     <ui5-table-cell>
                         <ui5-rating-indicator value={item.manager_rating}></ui5-rating-indicator>
-                    </ui5-table-cell>
-                </ui5-table-row>))
+                    </ui5-table-cell>            
+                </ui5-table-row>   
+                 
+                ))
+                
                 }
+    <RunRows items={eSkill}/>
+    
   
         </ui5-table>
     </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 
-const Search = () => {
+const SearchPage = ({skill}) => {
     const [searchTerm, setSearchTerm] = React.useState("");
     const [searchResults, setSearchResults] = React.useState([]);
     const [people, setPeople] = React.useState([ ]);
@@ -27,8 +27,9 @@ const Search = () => {
           }
         )
     }, [])
+    
     React.useEffect(() => {
-      fetch(`https://135.125.27.98:8000/api/subskills/`)
+      fetch(`https://135.125.27.98:8000/api/subskills/?title=&skill=${skill}`)
         .then(res => res.json())
         .then(
           (result) => {
@@ -40,6 +41,7 @@ const Search = () => {
             setError(error);
           }
         )
+        console.log(skill)
     }, [])
 
     const handleChange = event => {
@@ -62,7 +64,7 @@ const Search = () => {
 const addRow = (e) => {
   console.log(e.target.innerText)
   const body = {title: e.target.innerText, employee_rating: 1, manager_rating: 1, studID: 'tom' };
-  axios.post('https://135.125.27.98:8000/api/skills/', body);
+  axios.post(`https://135.125.27.98:8000/api/essentialskills/`, body);
 }
 
 if (error) {
@@ -83,11 +85,11 @@ if (error) {
             />
             <ul>
                 {searchResults.map(item => (
-                <li onClick={addRow}>{item}</li>
+                <li class="search-ui" onClick={addRow}>{item}</li>
                 ))}
             </ul>
     </div>
     );
     }
 }
-export default Search
+export default SearchPage
