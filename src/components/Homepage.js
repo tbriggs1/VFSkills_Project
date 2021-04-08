@@ -44,7 +44,7 @@ const title = "Home";
                         <h4>Welcome to your direct reportees <br/> Click on the button below to see reportees</h4>
                         </div>
                         <ui5-button design="Default">View Direct Reportees</ui5-button>
-                    </ui5-card>
+                </ui5-card>
                 </Link>
             </section>
         </div>

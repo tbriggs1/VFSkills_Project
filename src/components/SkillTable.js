@@ -4,6 +4,9 @@ import "@ui5/webcomponents/dist/Table.js";
 import "@ui5/webcomponents/dist/TableColumn.js"; 
 import "@ui5/webcomponents/dist/TableRow.js"; 
 import "@ui5/webcomponents/dist/TableCell.js";
+import { RadioButton } from '@ui5/webcomponents-react';
+import {FlexBox, FlexBoxAlignItems, Label} from '@ui5/webcomponents-react';
+
 import Popup from 'reactjs-popup';
 import Search from './Search';
 import SearchPage from './SearchPage';
@@ -17,6 +20,7 @@ export const EssentialSkillTable = ({userid}) => {
     const [aSkill, setASkill] = useState([]);
     const [eSkill, setESkill] = useState([]);
     const [skill, setSkill] = React.useState();
+    
     // Note: the empty deps array [] means
     // this useEffect will run once
     // similar to componentDidMount()
@@ -77,12 +81,15 @@ export const EssentialSkillTable = ({userid}) => {
                 <span class="Column-span">Level 1 Skill</span>
             </ui5-table-column>
 
-            <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="Dimensions" demand-popin>
+            <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="Employee Rating" demand-popin>
                 <span class="Column-span" >Employee Rating *</span>
             </ui5-table-column>
 
-            <ui5-table-column class="table-column" slot="columns"  min-width="600"  popin-text="Weight" demand-popin>
+            <ui5-table-column class="table-column" slot="columns"  min-width="600"  popin-text="Manager Rating" demand-popin>
                 <span class="Column-span" >Manager Rating</span>
+            </ui5-table-column>
+            <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="open for manager" demand-popin>
+                <span class="Column-span">Open for Manager Rating</span>
             </ui5-table-column>
 
       
@@ -99,7 +106,14 @@ export const EssentialSkillTable = ({userid}) => {
                     </ui5-table-cell>
                     <ui5-table-cell>
                         <ui5-rating-indicator value={item.manager_rating}></ui5-rating-indicator>
-                    </ui5-table-cell>            
+                    </ui5-table-cell> 
+                    <ui5-table-cell>
+                    <FlexBox alignItems={FlexBoxAlignItems.Center}>
+                        <Label></Label>
+                        <RadioButton name={item.id} text="Yes" />
+                        <RadioButton name={item.id} text="No" />
+                    </FlexBox>
+                </ui5-table-cell>           
                 </ui5-table-row>   
                  
                 ))
@@ -183,13 +197,17 @@ export const ManagerEssentialSkillTable = ({userid}) => {
                 <span class="Column-span">Level 1 Skill</span>
             </ui5-table-column>
 
-            <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="Dimensions" demand-popin>
+            <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="Employee Rating" demand-popin>
                 <span class="Column-span" >Employee Rating *</span>
             </ui5-table-column>
 
-            <ui5-table-column class="table-column" slot="columns"  min-width="600"  popin-text="Weight" demand-popin>
+            <ui5-table-column class="table-column" slot="columns"  min-width="600"  popin-text="Manager Rating" demand-popin>
                 <span class="Column-span" >Manager Rating</span>
             </ui5-table-column>
+            <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="open for manager" demand-popin>
+                <span class="Column-span">Open for Manager Rating</span>
+            </ui5-table-column>
+            
 
       
             {items.map(item => (
@@ -204,9 +222,13 @@ export const ManagerEssentialSkillTable = ({userid}) => {
                     </ui5-table-cell>
                     <ui5-table-cell>
                         <ui5-rating-indicator value={item.manager_rating}></ui5-rating-indicator>
-                    </ui5-table-cell>            
-                </ui5-table-row>   
-                 
+                    </ui5-table-cell>
+                    <FlexBox alignItems={FlexBoxAlignItems.Center}>
+                        <Label></Label>
+                        <RadioButton name={item.id} text="Yes" disabled selected/>
+                        <RadioButton name={item.id} text="No" disabled/>
+                    </FlexBox>            
+                </ui5-table-row>              
                 ))
                 
                 }
@@ -280,6 +302,9 @@ export const AdditionalSkillTable = ({userid}) => {
                 <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="Manager Rating" demand-popin>
                     <span class="Column-span" >Manager Rating</span>
                 </ui5-table-column>
+                <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="open for manager" demand-popin>
+                    <span class="Column-span">Open for Manager Rating</span>
+                </ui5-table-column>
                 
 
                
@@ -305,8 +330,15 @@ export const AdditionalSkillTable = ({userid}) => {
                     </ui5-table-cell>
                     <ui5-table-cell >
                         <ui5-rating-indicator value={item.manager_rating}></ui5-rating-indicator>
-                        <ui5-button class="delete-btn" icon="cancel" design="Negative" aria-labelledby="lblCancel" id={item.id} onClick={rowDelete}></ui5-button>
                     </ui5-table-cell>
+                    <ui5-table-cell>
+                    <FlexBox class="display" alignItems={FlexBoxAlignItems.Center}>
+                        <Label></Label>
+                        <RadioButton name={item.id} text="Yes" />
+                        <RadioButton name={item.id} text="No" />
+                    <ui5-button class="delete-btn" icon="cancel" design="Negative" aria-labelledby="lblCancel" id={item.id} onClick={rowDelete}></ui5-button>
+                    </FlexBox>
+                </ui5-table-cell>     
                 </ui5-table-row>))
                 }
 
@@ -440,6 +472,9 @@ export const ManagerAdditional = ({userid}) => {
                 <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="Manager Rating" demand-popin>
                     <span class="Column-span" >Manager Rating</span>
                 </ui5-table-column>
+                <ui5-table-column class="table-column" slot="columns" min-width="600" popin-text="open for manager" demand-popin>
+                <span class="Column-span">Open for Manager Rating</span>
+            </ui5-table-column>
                 
 
                
@@ -466,6 +501,11 @@ export const ManagerAdditional = ({userid}) => {
                     <ui5-table-cell >
                         <ui5-rating-indicator value={item.manager_rating}></ui5-rating-indicator>
                     </ui5-table-cell>
+                    <FlexBox alignItems={FlexBoxAlignItems.Center}>
+                        <Label></Label>
+                        <RadioButton name={item.id} text="Yes" disabled selected/>
+                        <RadioButton name={item.id} text="No" disabled/>
+                    </FlexBox>          
                 </ui5-table-row>))
                 }
 
