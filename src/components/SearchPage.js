@@ -65,6 +65,8 @@ const addRow = (e) => {
   console.log(e.target.innerText)
   const body = {title: e.target.innerText, employee_rating: 1, manager_rating: 1, studID: userID };
   axios.post(`https://135.125.27.98:8000/api/essentialskills/`, body);
+  const toasty = document.getElementById("skillAdded");
+        toasty.show();
 }
 
 if (error) {

@@ -63,6 +63,8 @@ const Search = () => {
 const addRow = (e) => {
   const body = {title: e.target.innerText, acquired: 'test', comments: 'write comment', employee_rating: 1, manager_rating: 1, studID: 'tom' };
   axios.post('https://135.125.27.98:8000/api/additonalskills/', body);
+  const toasty = document.getElementById("skillAdded");
+        toasty.show();
 }
 
 if (error) {
@@ -81,6 +83,7 @@ if (error) {
                 value={searchTerm}
                 onChange={handleChange}
             />
+            <ui5-toast id="skillAdded">Skill Added</ui5-toast>
             <ul>
                 {searchResults.map(item => (
                 <li onClick={addRow}>{item}</li>
