@@ -92,7 +92,7 @@ export const EssentialSkillTable = ({userid}) => {
                     <h3 id={item.id} key={item.id}>
                         {item.title}
                     </h3> <br/><Popup trigger={<ui5-button icon="add" id="openPopoverButton" aria-labelledby="lblAdd" class="add-btn"></ui5-button>}
-                    position="bottom left"><div class="popup-search"><SearchPage skill={item.id} class="search-bar"/></div></Popup>
+                    position="bottom left"><div class="popup-search"><SearchPage skill={item.id} userID={userid} class="search-bar"/></div></Popup>
                     </ui5-table-cell>
                     <ui5-table-cell>
                         <ui5-rating-indicator value={item.employee_rating}></ui5-rating-indicator>

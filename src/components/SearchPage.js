@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 
-const SearchPage = ({skill}) => {
+const SearchPage = ({skill, userID}) => {
     const [searchTerm, setSearchTerm] = React.useState("");
     const [searchResults, setSearchResults] = React.useState([]);
     const [people, setPeople] = React.useState([ ]);
@@ -63,7 +63,7 @@ const SearchPage = ({skill}) => {
     
 const addRow = (e) => {
   console.log(e.target.innerText)
-  const body = {title: e.target.innerText, employee_rating: 1, manager_rating: 1, studID: 'tom' };
+  const body = {title: e.target.innerText, employee_rating: 1, manager_rating: 1, studID: userID };
   axios.post(`https://135.125.27.98:8000/api/essentialskills/`, body);
 }
 
