@@ -1,5 +1,16 @@
 
 
+* {
+
+}
+
+
+
+.ui5-card-header{
+    text-align: center;
+    --sapTile_Background: red;
+}
+
 .card-section{
     display:flex;
     gap: 4rem;

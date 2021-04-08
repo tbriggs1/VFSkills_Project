@@ -37,13 +37,8 @@ export const RunRows = ({items}) =>{
 
 
 export const ManagerRunRows = ({items}) =>{
-    const rowDelete = (e) => {
-        const id = e.target.id
-        axios.delete(`https://135.125.27.98:8000/api/essentialskills/${id}/`)
-        const toasty = document.getElementById("toastCancelled");
-        toasty.show();
-    }
-    
+
+ 
     
     return(
    <>

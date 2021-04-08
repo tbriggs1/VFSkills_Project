@@ -33,11 +33,11 @@ const ManagerAssessment = () => {
                 header-text="Employee Beth" class="full-width" collapsed="true">
                 <ui5-panel width="100%" accessible-role="Complementary"
                     header-text="Essential Skills" class="full-width">
-                        <EssentialSkillTable userid="beth"/>
+                        <ManagerEssentialSkillTable userid="beth"/>
                 </ui5-panel>
                 
                 <ui5-panel width="100%" accessible-role="Complementary" header-text="Additonal Skills">
-                    <AdditionalSkillTable userid="beth"/>
+                    <ManagerAdditional userid="beth"/>
                     <ui5-button class="submit-btn" design="Positive">Save and Submit</ui5-button>
                     <ui5-button design="Negative">Cancel</ui5-button>
                 </ui5-panel>

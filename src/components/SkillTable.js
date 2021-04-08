@@ -91,13 +91,8 @@ export const EssentialSkillTable = ({userid}) => {
                     <ui5-table-cell>
                     <h3 id={item.id} key={item.id}>
                         {item.title}
-<<<<<<< HEAD
-                    </h3> <br/><Popup trigger={<ui5-button icon="add" id="openPopoverButton" aria-labelledby="lblAdd" class="add-btn"></ui5-button>}
-                    position="bottom left"><div class="popup-search"><SearchPage skill={item.id} userID={userid} class="search-bar"/></div></Popup>
-=======
                     </h3><Popup trigger={<ui5-button icon="add" id="openPopoverButton" icon-size="10px" aria-labelledby="lblAdd" class="add-btn"></ui5-button>}
-                    position="bottom left"><div class="popup-search"><SearchPage skill={item.id} class="search-bar"/></div></Popup>
->>>>>>> 86a7ad84243e11129ebdb7ff93d2740e79c3cf97
+                    position="bottom left"><div class="popup-search"><SearchPage skill={item.id} userID={userid} class="search-bar"/></div></Popup>
                     </ui5-table-cell>
                     <ui5-table-cell>
                         <ui5-rating-indicator value={item.employee_rating}></ui5-rating-indicator>
